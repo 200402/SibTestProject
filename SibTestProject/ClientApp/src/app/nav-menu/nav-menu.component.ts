@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class NavMenuComponent {
   public sign_in_or_nothing = "Sign in";
   public sign_up_or_Log_out = "Sign up";
-  public sign_in_or_nothing_Link = "Sign in";
+  public sign_in_or_nothing_Link = "Sign_In";
   public sign_up_or_Log_out_Link = "Sign up";
 
   isExpanded = false;
