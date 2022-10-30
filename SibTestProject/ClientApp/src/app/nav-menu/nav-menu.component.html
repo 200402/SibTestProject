@@ -7,14 +7,16 @@
         class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
         [ngClass]="{ show: isExpanded }">
         <ul class="navbar-nav flex-grow">
-          <li
-            class="nav-item"
-            [routerLinkActive]="['link-active']"
-            [routerLinkActiveOptions]="{ exact: true }">
-            <a class="nav-link text-dark " [routerLink]="['/{{ sign_in_or_nothing_Link }}']">{{ sign_in_or_nothing }}</a>
+          <li class="nav-item"
+              [routerLinkActive]="['link-active']"
+              [routerLinkActiveOptions]="{ exact: true }">
+            <a class="nav-link text-dark " [routerLink]="['/']">{{ sign_in_or_nothing }}</a>
           </li>
           <li class="" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark " [routerLink]="['/{{sign_up_or_Log_out_Link}}']">{{ sign_up_or_Log_out }}</a>
+            <a class="nav-link text-dark " [routerLink]="['/sign_up']">{{ sign_up_or_Log_out }}</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/counter']">Counter</a>
           </li>
         </ul>
       </div>
