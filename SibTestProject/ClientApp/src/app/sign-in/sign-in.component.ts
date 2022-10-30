@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-sign_up',
-  templateUrl: './sign_up.component.html',
-  styleUrls: ['./sign_up.component.css']
+  selector: 'app-sign-in',
+  templateUrl: './sign-in.component.html',
+  styleUrls: ['./sign-in.component.css']
 })
-export class Sign_UpComponent {
+export class Sign_InComponent {
 
   //if(false) {
   //  window.location.href = 'URL2';
