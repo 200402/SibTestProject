@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SibTestProjectDB.Data.CoreTypes;
+using SibTestProjectDB.CoreTypes;
 
 namespace SibTestProjectDB.Interfaces
 {

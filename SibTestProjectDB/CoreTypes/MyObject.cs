@@ -1,12 +1,13 @@
-﻿namespace SibTestProjectDB.Data.CoreTypes
+﻿namespace SibTestProjectDB.CoreTypes
 {
     public class MyObject
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public Guid Id { get; set; }
+        public Guid UserId { get; set; } //владелец файла
+        public string Name { get; set; } // Название файла
         public string Parent { get; set; } //папка в которой объект находится
-        public string Master { get; set; } //владелец файла
-        public string Type { get; set; } //папка "folder" или "object"
-        public ulong Size { get; set; } //нужен ли?
+        public string Type { get; set; } //это папка "folder" или "object"
+        public DateTime CreationDate { get; set; } //это папка "folder" или "object"
+        public ulong? Size { get; set; } //нужен ли?
     }
 }

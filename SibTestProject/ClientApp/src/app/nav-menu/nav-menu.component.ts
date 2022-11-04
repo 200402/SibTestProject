@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class NavMenuComponent {
   public sign_in_or_nothing = "Войти";
-  public sign_up_or_Log_out = "Зарегестироваться";
+  public sign_up_or_Log_out = "Зарегистрироваться";
 
   isExpanded = false;
 

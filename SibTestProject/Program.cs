@@ -1,3 +1,5 @@
+using SibTestProjectDB;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -12,6 +14,19 @@ app.UseHsts();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+using (var scope = app.Services.CreateScope())
+{
+    var service = scope.ServiceProvider;
+    try
+    {
+        var cintext = service.GetRequiredService<Context>();
+    }
+    catch (Exception exception)
+    {
+        Console.WriteLine(exception);
+    }
+}
+
 
 
 app.MapControllerRoute(
