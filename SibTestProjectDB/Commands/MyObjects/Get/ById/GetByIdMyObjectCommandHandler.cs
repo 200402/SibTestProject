@@ -7,17 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SibTestProjectDB.Commands.MyObjects.Get
+namespace SibTestProjectDB.Commands.MyObjects.Get.ById
 {
-    internal class GetMyObjectCommandHandler : IRequestHandler<GetMyObjectCommand, MyObject>
+    internal class GetByIdMyObjectCommandHandler : IRequestHandler<GetByIdMyObjectCommand, MyObject>
     {
         private readonly IMyObjectContext _dbContext;
-        public GetMyObjectCommandHandler(IMyObjectContext dbContext)
+        public GetByIdMyObjectCommandHandler(IMyObjectContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public async Task<MyObject> Handle(GetMyObjectCommand request, CancellationToken cancellationToken)
+        public async Task<MyObject> Handle(GetByIdMyObjectCommand request, CancellationToken cancellationToken)
         {
             var entity = await _dbContext.MyObjects.FindAsync(new object[] { request.Id }, cancellationToken);
             if (entity == null)

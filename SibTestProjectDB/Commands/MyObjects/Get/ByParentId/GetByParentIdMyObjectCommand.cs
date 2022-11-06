@@ -6,10 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SibTestProjectDB.Commands.MyObjects.Get
+namespace SibTestProjectDB.Commands.MyObjects.Get.ByParentId
 {
-    internal class GetMyObjectCommand : IRequest<MyObject>
+    internal class GetByParentIdMyObjectCommand : IRequest<MyObject>
     {
-        public Guid Id { get; set; }
+        public Guid ParentId { get; set; }
     }
 }
