@@ -10,7 +10,6 @@ namespace SibTestProjectDB
         public DbSet<User> Users { get; set; }
         public DbSet<MyObject> MyObjects { get; set; }
 
-
         public Context(DbContextOptions<Context> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder builder)

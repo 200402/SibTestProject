@@ -8,7 +8,7 @@ using MediatR;
 
 namespace SibTestProjectDB.Commands.Users.Create 
 {
-    internal class CreateUserCommand : IRequest<string>
+    public class CreateUserCommand : IRequest<string>
     {
         public string Email { get; set; }
         public string Password { get; set; }
