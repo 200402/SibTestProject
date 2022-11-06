@@ -3,7 +3,7 @@ using SibTestProjectDB.CoreTypes;
 
 namespace SibTestProjectDB.Interfaces
 {
-    internal interface IUserContext
+    public interface IUserContext
     {
         DbSet<User> Users { get; set; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);

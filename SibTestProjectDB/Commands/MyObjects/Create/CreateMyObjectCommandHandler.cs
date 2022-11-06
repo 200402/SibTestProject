@@ -23,7 +23,7 @@ namespace SibTestProjectDB.Commands.MyObjects.Create
             {
                 UserId = request.UserId,
                 Name = request.Name,
-                Parent = request.Parent,
+                ParentId = request.ParentId,
                 Type = request.Type,
                 CreationDate = DateTime.Now,
                 Size = request.Size
