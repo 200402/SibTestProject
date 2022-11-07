@@ -1,10 +1,12 @@
 ﻿using MediatR;
-using SibTestProjectDB.CoreTypes;
+using SibTestProjectDB.TypesCore;
 using SibTestProjectDB.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using SibTestProjectDB.TypesIntermediate;
 
 namespace SibTestProjectDB.Commands.Users.Authentication
 {
-    internal class AuthenticationUserCommandHandler : IRequestHandler<AuthenticationUserCommand, string>
+    internal class AuthenticationUserCommandHandler : IRequestHandler<AuthenticationUserCommand, UserToken>
     {
         private readonly IUserContext _dbContext;
         public AuthenticationUserCommandHandler(IUserContext dbContext)
@@ -12,15 +14,15 @@ namespace SibTestProjectDB.Commands.Users.Authentication
             _dbContext = dbContext;
         }
 
-        public async Task<string> Handle(AuthenticationUserCommand request, CancellationToken cancellationToken)
+        public async Task<UserToken> Handle(AuthenticationUserCommand request, CancellationToken cancellationToken)
         {
-            var entity = await _dbContext.Users.FindAsync(new object[] { request.Email,request.Password }, cancellationToken);
+            var entity = await _dbContext.Users.FirstOrDefaultAsync(user => user.Email == request.Email && user.Password == request.Password);
 
             if (entity == null)
             {
-                return "403";
+                return new UserToken();
             }
-            return entity.Token;
+            return new UserToken { Token = entity.Token };
         }
     }
 }

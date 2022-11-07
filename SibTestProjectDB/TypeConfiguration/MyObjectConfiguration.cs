@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SibTestProjectDB.CoreTypes;
+using SibTestProjectDB.TypesCore;
 
 namespace SibTestProjectDB.TypeConfiguration
 {

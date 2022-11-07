@@ -7,16 +7,37 @@
     <form>
       <h3 class="text-center">Форма входа</h3>
       <div class="form-group">
-        <input class="form-control item" type="text" name="username" maxlength="15" minlength="4" pattern="^[a-zA-Z0-9_.-]*$" id="username" placeholder="Логин/Email" required>
+        <input #login
+               class="form-control item"
+               type="text"
+               name="username"
+               maxlength="15"
+               minlength="4"
+               pattern="^[a-zA-Z0-9_.-]*$"
+               id="username"
+               placeholder="Логин/Email"
+               required>
       </div>
       <div class="form-group">
-        <input class="form-control item" type="password" name="Пароль" minlength="6" id="password" placeholder="Пароль" required>
+        <input #password
+               class="form-control item"
+               type="password"
+               name="Пароль"
+               minlength="6"
+               placeholder="Пароль"
+               required>
       </div>
       <div class="form-group">
-        <input class="form-control item" type="password" name="Пароль" minlength="6" id="password" placeholder="Повторите пароль" required>
+        <input #passwordTest
+               class="form-control item"
+               type="password"
+               name="Пароль"
+               minlength="6"
+               placeholder="Повторите пароль"
+               required>
       </div>
       <div class="form-group">
-        <button class="btn btn-primary btn-block create-account" type="submit" (click)="pass()">Вход в аккаунт</button>
+        <button class="btn btn-primary btn-block create-account" type="submit" (click)="sign_up()">Вход в аккаунт</button>
       </div>
     </form>
   </div>

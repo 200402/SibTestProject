@@ -6,15 +6,30 @@
   <div class="registration-cssave qwe">
     <form>
       <h3 class="text-center">Форма входа</h3>
+      
       <div class="form-group">
-        <input class="form-control item" type="text" name="username" maxlength="15" minlength="4" pattern="^[a-zA-Z0-9_.-]*$" id="username" placeholder="Логин/Email" required>
+        <input #login
+               class="form-control item"
+               type="text"
+               name="username"
+               maxlength="15"
+               minlength="4"
+               pattern="^[a-zA-Z0-9_.-]*$" id="username" placeholder="Логин/Email" required>
       </div>
       <div class="form-group">
-        <input class="form-control item" type="password" name="Пароль" minlength="6" id="password" placeholder="Пароль" required>
+        <input #password
+               class="form-control item"
+               type="password"
+               name="Пароль"
+               minlength="6"
+               id="password"
+               placeholder="Пароль"
+               required>
       </div>
       <div class="form-group">
-        <button class="btn btn-primary btn-block create-account" type="submit" (click)="pass()">Вход в аккаунт</button>
+        <button class="btn btn-primary btn-block create-account" type="submit" (click)="sign_in()">Вход в аккаунт</button>
       </div>
+      <font color="{{ warning }}">Неправильный логин или пароль</font>
     </form>
   </div>
 </body>

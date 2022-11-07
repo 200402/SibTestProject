@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MediatR;
-using SibTestProjectDB.CoreTypes;
+using SibTestProjectDB.TypesCore;
 using SibTestProjectDB.Interfaces;
 using SibTestProjectDB.Commands.Users;
 
 
 namespace SibTestProjectDB.Commands.Users.Create
 {
-    class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, string>
+    class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, User>
     {
         private readonly IUserContext _dbContext;
         public CreateUserCommandHandler(IUserContext dbContext)
@@ -19,7 +19,7 @@ namespace SibTestProjectDB.Commands.Users.Create
             _dbContext = dbContext;
         }
 
-        public async Task<string> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+        public async Task<User> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             var user = new User
             {
@@ -29,7 +29,7 @@ namespace SibTestProjectDB.Commands.Users.Create
             };
             await _dbContext.Users.AddAsync(user, cancellationToken);
             await _dbContext.SaveChangesAsync(cancellationToken);
-            return user.Token;
+            return user;
         }
 
         private string GenerateRandomString(int minLenght, int maxLenght)

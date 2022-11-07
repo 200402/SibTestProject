@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using SibTestProjectDB.CoreTypes;
+using SibTestProjectDB.TypesCore;
 using SibTestProjectDB.Interfaces;
 using System;
 using System.Collections.Generic;

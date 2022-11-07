@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SibTestProjectDB.CoreTypes;
+using SibTestProjectDB.TypesCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace SibTestProjectDB.Commands.Users.Get.UserList

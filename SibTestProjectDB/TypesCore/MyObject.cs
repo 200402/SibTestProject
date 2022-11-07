@@ -1,4 +1,4 @@
-﻿namespace SibTestProjectDB.CoreTypes
+﻿namespace SibTestProjectDB.TypesCore
 {
     public class MyObject
     {

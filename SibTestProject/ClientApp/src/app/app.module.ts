@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { Sign_InComponent } from './sign-in/sign-in.component';
 import { Sign_UpComponent } from './sign-up/sign-up.component';
+import { StorageComponent } from './storage/storage.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 
@@ -17,6 +18,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
     NavMenuComponent,
     Sign_InComponent,
     Sign_UpComponent,
+    StorageComponent,
     CounterComponent,
     FetchDataComponent
   ],
@@ -29,6 +31,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
       { path: 'sign_up', component: Sign_UpComponent},
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'storage', component: StorageComponent },
     ])
   ],
   providers: [],

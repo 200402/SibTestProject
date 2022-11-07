@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using SibTestProjectDB.CoreTypes;
+using SibTestProjectDB.TypesCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
