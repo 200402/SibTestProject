@@ -14,7 +14,7 @@ export class Sign_UpComponent {
   public http: HttpClient;
   public warning_color: string;
   public warning_text: string;
-
+  //TODO сделать проверку на соответсвие полей требованиям
   public sign_up() { //TODO раскидать это на функции
     if (this.locpas.nativeElement.value == this.locpast.nativeElement.value) {
       var base_url = window.location.origin;

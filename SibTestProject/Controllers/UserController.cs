@@ -26,6 +26,7 @@ namespace SibTestProject.Controllers
                 Email = login,
                 Password = password
             };
+            Repository.newUser(login);
             return Ok(await Mediator.Send(query));
         }
 
