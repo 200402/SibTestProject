@@ -13,11 +13,13 @@ export class StorageComponent {
   constructor(http: HttpClient) {
     this.http = http;
     this.stroka = this.getCookie("Token");
+    document.addEventListener('contextmenu', event => {
+      event.preventDefault();
+      console.log(123);
+    }); 
   }
 
-  public testFunction() {
 
-  }
 
   private getCookie(name: string) {
     let matches = document.cookie.match(new RegExp(
