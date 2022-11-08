@@ -6,6 +6,7 @@ using SibTestProjectDB.Commands.Users.Create;
 using SibTestProjectDB.Commands.Users.Authentication;
 using SibTestProjectDB.TypesCore;
 using System.Security.Claims;
+using SibTestProjectDB.TypesIntermediate;
 
 namespace SibTestProject.Controllers
 {
@@ -22,13 +23,12 @@ namespace SibTestProject.Controllers
             var query = new GetUserListCommand
             {
                 Id = id,
-            };
-            var vm = await Mediator.Send(query);
-            return Ok(vm);
+            }; 
+            return Ok(await Mediator.Send(query));
         }
 
         [HttpGet("signUp/{login}/{password}")]
-        public async Task<ActionResult<User>> sign_in(string login, string password)
+        public async Task<ActionResult<User>> signIn(string login, string password)
         {
             var query = new CreateUserCommand
             {
@@ -38,17 +38,35 @@ namespace SibTestProject.Controllers
             return Ok(await Mediator.Send(query));
         }
 
-
         [HttpGet("signIn/{login}/{password}")]
-        public async Task<ActionResult<string>> sign_up(string login, string password)
+        public async Task<ActionResult<string>> signUp(string login, string password)
         {
             var query = new AuthenticationUserCommand
             {
                 Email = login,
                 Password = password
-            };
-            var vm = await Mediator.Send(query);
-            return Ok(vm);
+            }; 
+            return Ok(await Mediator.Send(query));
+        }
+
+        [HttpGet("getByToken/{login}")]
+        public async Task<ActionResult<UserInfo>> getByToken(string token)
+        {
+            var query = new GetUserByTokenCommand
+            {
+                Token = token
+            }; 
+            return Ok(await Mediator.Send(query));
+        }
+
+        [HttpGet("getByLogin/{login}")]
+        public async Task<ActionResult<UserInfo>> getByLogin(string login)
+        {
+            var query = new GetUserByLoginCommand
+            {
+                Login = login
+            }; 
+            return Ok(await Mediator.Send(query));
         }
     }
 }
