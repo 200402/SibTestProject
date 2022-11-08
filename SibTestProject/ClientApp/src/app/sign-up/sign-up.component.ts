@@ -24,6 +24,7 @@ export class Sign_UpComponent {
           console.log(base_url + '/api/signUp/' + this.loclog.nativeElement.value + '/' + Md5.hashStr(this.locpas.nativeElement.value));
           this.http.get<UserToken>(base_url + '/api/signUp/' + this.loclog.nativeElement.value + '/' + Md5.hashStr(this.locpas.nativeElement.value)).subscribe(result => {
             document.cookie = 'Token=' + result.token
+            document.cookie = 'login=' + this.loclog.nativeElement.value;
             window.location.href = 'https://localhost:44455/storage';
           }, error => {
             console.error(error);

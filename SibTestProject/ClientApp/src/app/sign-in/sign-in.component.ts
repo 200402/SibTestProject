@@ -17,8 +17,9 @@ export class Sign_InComponent {
 
   public sign_in() {
     var base_url = window.location.origin;
-    this.http.get<UserToken>(base_url + '/api/signIn/' + this.loclog.nativeElement.value + '/' + Md5.hashStr(this.locpas.nativeElement.value)).subscribe(result => {
+    this.http.get<UserInfo>(base_url + '/api/signIn/' + this.loclog.nativeElement.value + '/' + Md5.hashStr(this.locpas.nativeElement.value)).subscribe(result => {
       document.cookie = 'Token=' + result.token;
+      document.cookie = 'login=' + this.loclog.nativeElement.value;
       window.location.href = 'https://localhost:44455/storage';
     }, error => {
       this.warning = "red";
@@ -39,6 +40,6 @@ export class Sign_InComponent {
   }
 }
 
-class UserToken {
+interface UserInfo {
   token: string;
 }

@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class NavMenuComponent {
   public sign_in_or_log_out = "Войти";
   public sign_up_or_nothing = "Зарегистрироваться";
+  public user_name = "SibTestProject";
 
   isExpanded = false;
 
@@ -23,10 +24,14 @@ export class NavMenuComponent {
     if (this.getCookie("Token") == undefined) {
       this.sign_in_or_log_out = "Войти"
       this.sign_up_or_nothing = "Зарегистрироваться"
+      this.user_name = "SibTestProject"
     }
     else {
       this.sign_in_or_log_out = "Сменить аккаунт"
       this.sign_up_or_nothing = ""
+      var login = this.getCookie("login")
+      if (login != undefined)
+        this.user_name = login
     }
   }
 
