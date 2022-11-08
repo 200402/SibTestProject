@@ -6,23 +6,28 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent {
-  public sign_in_or_nothing = "Войти";
-  public sign_up_or_Log_out = "Зарегистрироваться";
+  public sign_in_or_log_out = "Войти";
+  public sign_up_or_nothing = "Зарегистрироваться";
+
+  isExpanded = false;
 
   constructor() {
-    if (this.getCookie("Token") != undefined) {
-      this.sign_in_or_nothing = "";
-      this.sign_up_or_Log_out = "Сменить аккаунт";
-    }
-    else {
-      this.sign_in_or_nothing = "Войти";
-      this.sign_up_or_Log_out = "Зарегистрироваться";
-    }
+    this.status();
+  }
+  deletec() {
+    this.setCookie('Token', '', 0);
+    this.status();
   }
 
-  public delete_cookie() {
-    document.cookie = 'Token=; Max-Age=0'
-    window.location.href = 'https://localhost:44455';
+  status() {
+    if (this.getCookie("Token") == undefined) {
+      this.sign_in_or_log_out = "Войти"
+      this.sign_up_or_nothing = "Зарегистрироваться"
+    }
+    else {
+      this.sign_in_or_log_out = "Сменить аккаунт"
+      this.sign_up_or_nothing = ""
+    }
   }
 
   private getCookie(name: string) {
@@ -31,9 +36,12 @@ export class NavMenuComponent {
     ));
     return matches ? decodeURIComponent(matches[1]) : undefined;
   }
-
-  isExpanded = false;
-
+  setCookie(cname: string, cvalue: string, exMins: number) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exMins * 60 * 1000));
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  } //TODO вынести работу с куки в отдельный класс ВЭСДЭ
   collapse() {
     this.isExpanded = false;
   }

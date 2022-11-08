@@ -6,12 +6,6 @@ import { Component } from '@angular/core';
 })
 export class StorageComponent {
 
-
-  public delete_cookie() {
-    document.cookie = 'Token=; Max-Age=0'
-    window.location.href = 'https://localhost:44455';
-  }
-
   private getCookie(name: string) {
     let matches = document.cookie.match(new RegExp(
       "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
