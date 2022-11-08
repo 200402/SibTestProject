@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MediatR;
+﻿using MediatR;
 using SibTestProjectDB.TypesCore;
 using SibTestProjectDB.Interfaces;
-using SibTestProjectDB.Commands.Users;
 
 
 namespace SibTestProjectDB.Commands.Users.Create

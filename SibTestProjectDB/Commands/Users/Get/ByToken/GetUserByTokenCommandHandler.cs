@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using SibTestProjectDB.Interfaces;
-using SibTestProjectDB.TypesCore;
 using Microsoft.EntityFrameworkCore;
 using SibTestProjectDB.TypesIntermediate;
 

@@ -16,8 +16,7 @@ export class StorageComponent {
   }
 
   public testFunction() {
-    console.log(1);
-    console.log(this.get_request("api/test/qwerty"));
+
   }
 
   private getCookie(name: string) {
