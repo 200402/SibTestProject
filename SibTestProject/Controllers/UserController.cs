@@ -49,7 +49,7 @@ namespace SibTestProject.Controllers
             return Ok(await Mediator.Send(query));
         }
 
-        [HttpGet("getByToken/{login}")]
+        [HttpGet("getByToken/{Token}")]
         public async Task<ActionResult<UserInfo>> getByToken(string token)
         {
             var query = new GetUserByTokenCommand
@@ -59,12 +59,12 @@ namespace SibTestProject.Controllers
             return Ok(await Mediator.Send(query));
         }
 
-        [HttpGet("getByLogin/{login}")]
-        public async Task<ActionResult<UserInfo>> getByLogin(string login)
+        [HttpGet("getByLogin/{Login}")]
+        public async Task<ActionResult<UserInfo>> getByLogin(string Login)
         {
             var query = new GetUserByLoginCommand
             {
-                Login = login
+                Login = Login
             }; 
             return Ok(await Mediator.Send(query));
         }
