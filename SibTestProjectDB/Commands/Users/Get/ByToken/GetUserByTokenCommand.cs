@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using SibTestProjectDB.TypesCore;
 using SibTestProjectDB.TypesIntermediate;
 
 namespace SibTestProjectDB.Commands.Users.Get.ByToken

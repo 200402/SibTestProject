@@ -59,12 +59,5 @@ namespace SibTestProject.Controllers
             }; 
             return Ok(await Mediator.Send(query));
         }
-
-        [HttpGet("test/{id}")]
-        public async Task<ActionResult> test(string id)
-        {
-            Repository.newUser(id);
-            return NoContent();
-        }
     }
 }

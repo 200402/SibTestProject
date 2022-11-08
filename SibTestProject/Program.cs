@@ -1,10 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SibTestProjectDB;
-using System.Reflection;
 using SibTestProjectDB.Interfaces;
 using MediatR;
-using Microsoft.Extensions.DependencyInjection;
-using SibTestProjectDB.Commands.Users.Get.UserList;
 
 
 var builder = WebApplication.CreateBuilder(args);
