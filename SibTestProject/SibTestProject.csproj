@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FileManager\FileManager.csproj" />
     <ProjectReference Include="..\SibTestProjectDB\SibTestProjectDB.csproj" />
   </ItemGroup>
 

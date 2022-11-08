@@ -7,6 +7,7 @@ using SibTestProjectDB.Commands.Users.Authentication;
 using SibTestProjectDB.TypesCore;
 using System.Security.Claims;
 using SibTestProjectDB.TypesIntermediate;
+using FileManager;
 
 namespace SibTestProject.Controllers
 {
@@ -16,16 +17,6 @@ namespace SibTestProject.Controllers
     {
         private IMediator _med;
         protected IMediator Mediator => _med ??= HttpContext.RequestServices.GetService<IMediator>();
-
-        [HttpGet("{id}")]
-        public async Task<ActionResult<User>> Get(Guid id)
-        {
-            var query = new GetUserListCommand
-            {
-                Id = id,
-            }; 
-            return Ok(await Mediator.Send(query));
-        }
 
         [HttpGet("signUp/{login}/{password}")]
         public async Task<ActionResult<User>> signIn(string login, string password)
@@ -67,6 +58,13 @@ namespace SibTestProject.Controllers
                 Login = Login
             }; 
             return Ok(await Mediator.Send(query));
+        }
+
+        [HttpGet("test/{id}")]
+        public async Task<ActionResult> test(string id)
+        {
+            Repository.newUser(id);
+            return NoContent();
         }
     }
 }
