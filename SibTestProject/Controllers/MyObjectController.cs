@@ -1,27 +1,42 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using SibTestProjectDB.Commands.MyObjects.Create;
 using FileManager;
-using SibTestProjectDB.Commands.Users.Get.UserList;
-using SibTestProjectDB.Commands.Users.Get.ByToken;
-using SibTestProjectDB.Commands.Users.Create;
-using SibTestProjectDB.Commands.Users.Authentication;
 using SibTestProjectDB.TypesCore;
-using System.Security.Claims;
-using SibTestProjectDB.TypesIntermediate;
 
 namespace SibTestProject.Controllers
 {
     [ApiController]
-    [Route("apiObj")]
+    [Route("api")]
     public class MyObjectController : ControllerBase
     {
         private IMediator _med;
         protected IMediator Mediator => _med ??= HttpContext.RequestServices.GetService<IMediator>();
-
-        [HttpGet("{id}")]
-        public async Task<ActionResult<string>> Get(string id)
+        private static readonly string[] Summaries = new[]
         {
-            return id;
+        "folder", "file"
+        };
+
+        [HttpPost("createFile")]
+        public async Task<ActionResult> createFile([FromBody] CreateMyObjectCommand createMyObject)
+        {
+            await Mediator.Send(createMyObject);
+            return NoContent();
+        }
+        [HttpGet("getFiles")]
+        public IEnumerable<MyObject> getFile()
+        {
+            return Enumerable.Range(1, 10).Select(index => new MyObject
+            {
+                Id = Guid.NewGuid(),
+                UserId = Guid.NewGuid(),
+                Name = index.ToString(),
+                ParentId = Guid.NewGuid(),
+                Type = Summaries[Random.Shared.Next(Summaries.Length)],
+                CreationDate = DateTime.Now,
+                NestingLevel = 0,
+                Size = 0
+            }).ToArray();
         }
     }
 }

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
 
+
 @Component({
   selector: 'app-storage',
   templateUrl: './storage.component.html',
@@ -12,6 +13,7 @@ export class StorageComponent {
   public http: HttpClient;
   public mouseCoordinate: position = new position;
   @ViewChild("MyContextMenu", { static: true }) MyCM: ElementRef;
+  @ViewChild("MyContextMenuFile", { static: true }) MyCMFile: ElementRef;
   @ViewChild("InteractiveTBody", { static: true }) InterTbody: ElementRef;
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
@@ -24,17 +26,31 @@ export class StorageComponent {
 
     this.http = http;
     this.stroka = this.getCookie("Token");
-    //http.get<MyObject[]>(baseUrl + 'weatherforecast').subscribe(result => {
-    //  this.MyObjects = result;
-    //}, error => console.error(error));
+    var base_url = window.location.origin;
+    setTimeout(() => {
+    this.http.get<MyObject[]>(baseUrl + "api/getFiles").subscribe(result => {
+      this.MyObjects = result;
+      console.log(result);
+      console.log(this.MyObjects);
+    }, error => {
+      console.error(error);
+    });
+    }, 1);
   }
 
-  myFunction(qwer: string) {
-    var menu = document.querySelector(".right-click-menu");
-    this.MyCM.nativeElement.style.top = this.mouseCoordinate.y+2+"px";
-    this.MyCM.nativeElement.style.left = this.mouseCoordinate.x + 2 + "px";
+  myFunction(qwer: string, Type: string) {
     setTimeout(() => {
-      this.MyCM.nativeElement.classList.add("active");
+      console.log(Type);
+      if (Type == "folder") {
+        this.MyCM.nativeElement.style.top = this.mouseCoordinate.y + 2 + "px";
+        this.MyCM.nativeElement.style.left = this.mouseCoordinate.x + 2 + "px";
+        this.MyCM.nativeElement.classList.add("active");
+        return
+      }
+      this.MyCMFile.nativeElement.style.top = this.mouseCoordinate.y + 2 + "px";
+      this.MyCMFile.nativeElement.style.left = this.mouseCoordinate.x + 2 + "px";
+      this.MyCMFile.nativeElement.classList.add("active");
+      return
     },1);
   }
 
@@ -43,15 +59,6 @@ export class StorageComponent {
       "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
     ));
     return matches ? decodeURIComponent(matches[1]) : undefined;
-  }
-
-  get_request(URL_string: string) {
-    var base_url = window.location.origin;
-    this.http.get(base_url + '/' + URL_string).subscribe(result => {
-      return result;
-    }, error => {
-      console.error(error);
-    });
   }
 
   mousePosition = (e: MouseEvent): void => {

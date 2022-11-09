@@ -1,4 +1,4 @@
-<table style="width:100%">
+<table style="width:100%" *ngIf="MyObjects">
   <thead>
     <tr>
       <th>
@@ -15,10 +15,10 @@
     </tr>
   </thead>
   <tbody #InteractiveTBody class="right-click-area">
-    <tr *ngFor="let MyObject of MyObjects" (contextmenu)="myFunction(MyObject.Id)" class="{{ MyObject.Id }}">
-      <td>{{ MyObject.Name }}</td>
-      <td>{{ MyObject.CreationDate }}</td>
-      <td>{{ MyObject.Size }}</td>
+    <tr *ngFor="let MyObjector of MyObjects" (contextmenu)="myFunction(MyObjector.Id, MyObjector.Type)" class="{{ MyObjector.Id }}">
+      <td>{{ MyObjector.Name }}</td>
+      <td>{{ MyObjector.CreationDate }}</td>
+      <td>{{ MyObjector.Size }}</td>
     </tr>
   </tbody>
 </table>
@@ -26,11 +26,14 @@
 <table #MyContextMenu class="right-click-menu">
   <tbody>
     <tr>Переименовать</tr>
+    <tr>Удалить</tr>
+    <tr>Добавить файл</tr>
+  </tbody>
+</table>
+<table #MyContextMenuFile class="right-click-menu">
+  <tbody>
+    <tr>Переименовать</tr>
     <tr>Скачать</tr>
     <tr>Удалить</tr>
   </tbody>
 </table>
-<!--<ul  class="" >
-  <li id="l1">Переименовать</li>
-  <li id="l2">Скачать</li>
-</ul>-->

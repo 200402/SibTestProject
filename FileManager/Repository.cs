@@ -6,16 +6,8 @@ namespace FileManager
     {
         public static int newUser(string userName)
         {
-            try
-            {
-                Directory.CreateDirectory($"../AllUsersFiles/{userName}");
-                return 200;
-            } 
-            catch (Exception ex) 
-            { 
-                Console.WriteLine(ex); 
-                return -1;
-            }
+            Directory.CreateDirectory($"../AllUsersFiles/{userName}");
+            return 200;
         }
 
     }
