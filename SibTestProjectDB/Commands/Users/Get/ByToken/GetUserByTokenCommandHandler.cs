@@ -21,7 +21,7 @@ namespace SibTestProjectDB.Commands.Users.Get.ByToken
                 return new UserInfo {Login =  "nothing" };
             }
 
-            return new UserInfo { Login = entity.Email, FreeSpace = entity.FreeSpace, SizeOfTheAvailableStorage = entity.SizeOfTheAvailableStorage };
+            return new UserInfo { Login = entity.Login, FreeSpace = entity.FreeSpace, SizeOfTheAvailableStorage = entity.SizeOfTheAvailableStorage };
         }
     }
 }

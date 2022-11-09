@@ -1,16 +1,36 @@
-<table class='' aria-labelledby="" >
+<table style="width:100%">
   <thead>
     <tr>
       <th>
-        <div>
-          <a>
-            <span>
-              <img src="https://wpl42.hosting.reg.ru:8443/cp/theme//icons/16/plesk/file-folder.png?377a0415c8e86b629f04f2de969b6dc7" />
-              Домашняя папка
-            </span>
-          </a>
-        </div>
+        <img src="https://wpl42.hosting.reg.ru:8443/cp/theme//icons/16/plesk/file-folder.png?377a0415c8e86b629f04f2de969b6dc7"
+             alt=""
+             height="16"> Домашнаяя папка
+        <img src="https://e7.pngegg.com/pngimages/988/717/png-clipart-computer-icons-document-file-format-presentation-icon-angle-rectangle.png"
+             alt=""
+             height="16">
       </th>
+      <th>Дата последнего изменения</th>
+      <th>Размер</th>
+
     </tr>
   </thead>
+  <tbody #InteractiveTBody class="right-click-area">
+    <tr *ngFor="let MyObject of MyObjects" (contextmenu)="myFunction(MyObject.Id)" class="{{ MyObject.Id }}">
+      <td>{{ MyObject.Name }}</td>
+      <td>{{ MyObject.CreationDate }}</td>
+      <td>{{ MyObject.Size }}</td>
+    </tr>
+  </tbody>
 </table>
+
+<table #MyContextMenu class="right-click-menu">
+  <tbody>
+    <tr>Переименовать</tr>
+    <tr>Скачать</tr>
+    <tr>Удалить</tr>
+  </tbody>
+</table>
+<!--<ul  class="" >
+  <li id="l1">Переименовать</li>
+  <li id="l2">Скачать</li>
+</ul>-->

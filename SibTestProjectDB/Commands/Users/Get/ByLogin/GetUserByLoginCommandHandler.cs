@@ -15,13 +15,13 @@ namespace SibTestProjectDB.Commands.Users.Get.ByToken
 
         public async Task<UserInfo> Handle(GetUserByLoginCommand request, CancellationToken cancellationToken)
         {
-            var entity = await _dbContext.Users.FirstOrDefaultAsync(user => user.Email == request.Login);
+            var entity = await _dbContext.Users.FirstOrDefaultAsync(user => user.Login == request.Login);
             if (entity == null)
             {
                 return new UserInfo { Login = "nothing"};
             }
 
-            return new UserInfo { Login = entity.Email, FreeSpace = entity.FreeSpace, SizeOfTheAvailableStorage = entity.SizeOfTheAvailableStorage};
+            return new UserInfo { Login = entity.Login, FreeSpace = entity.FreeSpace, SizeOfTheAvailableStorage = entity.SizeOfTheAvailableStorage};
         }
     }
 }

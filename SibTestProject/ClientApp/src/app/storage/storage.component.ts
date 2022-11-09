@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-storage',
@@ -7,19 +7,36 @@ import { Component } from '@angular/core';
   styleUrls: ['./storage.component.css']
 })
 export class StorageComponent {
+  public MyObjects: MyObject[] = [];
   public stroka: string | undefined;
   public http: HttpClient;
+  public mouseCoordinate: position = new position;
+  @ViewChild("MyContextMenu", { static: true }) MyCM: ElementRef;
+  @ViewChild("InteractiveTBody", { static: true }) InterTbody: ElementRef;
 
-  constructor(http: HttpClient) {
+  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+
+    document.addEventListener("contextmenu", event => event.preventDefault());
+    document.addEventListener('mousemove', this.mousePosition);
+    document.addEventListener('click', event => {
+      this.MyCM.nativeElement.classList.remove("active");
+    });
+
     this.http = http;
     this.stroka = this.getCookie("Token");
-    document.addEventListener('contextmenu', event => {
-      event.preventDefault();
-      console.log(123);
-    }); 
+    //http.get<MyObject[]>(baseUrl + 'weatherforecast').subscribe(result => {
+    //  this.MyObjects = result;
+    //}, error => console.error(error));
   }
 
-
+  myFunction(qwer: string) {
+    var menu = document.querySelector(".right-click-menu");
+    this.MyCM.nativeElement.style.top = this.mouseCoordinate.y+2+"px";
+    this.MyCM.nativeElement.style.left = this.mouseCoordinate.x + 2 + "px";
+    setTimeout(() => {
+      this.MyCM.nativeElement.classList.add("active");
+    },1);
+  }
 
   private getCookie(name: string) {
     let matches = document.cookie.match(new RegExp(
@@ -36,5 +53,25 @@ export class StorageComponent {
       console.error(error);
     });
   }
-} 
+
+  mousePosition = (e: MouseEvent): void => {
+    this.mouseCoordinate.x = e.clientX;
+    this.mouseCoordinate.y = e.clientY;
+  }
+}
+
+class position {
+  x: number;
+  y: number;
+}
+
+interface MyObject {
+  Id: string;
+  Name: string;
+  ParentId: string;
+  Type: string;
+  CreationDate: string;
+  NestingLevel: string;
+  Size: string;
+}
 

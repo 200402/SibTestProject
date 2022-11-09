@@ -17,7 +17,7 @@ namespace SibTestProjectDB.Commands.Users.Create
         {
             var user = new User
             {
-                Email = request.Email,
+                Login = request.Email,
                 Password = request.Password,
                 Token = GenerateRandomString(50, 70) //TODO заменить этот шлак на чет адекватное (ну или забей, JWT тут не нужОн)
             };

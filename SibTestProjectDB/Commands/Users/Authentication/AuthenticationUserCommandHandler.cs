@@ -15,7 +15,7 @@ namespace SibTestProjectDB.Commands.Users.Authentication
 
         public async Task<UserToken> Handle(AuthenticationUserCommand request, CancellationToken cancellationToken)
         {
-            var entity = await _dbContext.Users.FirstOrDefaultAsync(user => user.Email == request.Email && user.Password == request.Password);
+            var entity = await _dbContext.Users.FirstOrDefaultAsync(user => user.Login == request.Email && user.Password == request.Password);
 
             if (entity == null)
             {
